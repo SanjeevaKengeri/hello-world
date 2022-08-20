@@ -17,6 +17,27 @@ jobs:
       - run:
           name: "Say hello"
           command: "python3 --version"
+          
+  python-console :
+    docker:
+      - image: cimg/base:2020.01
+
+    steps:
+      - checkout
+      - run:
+          name: "Say hello"
+          command: "python3"
+  
+  add :
+    docker:
+      - image: cimg/base:2020.01
+
+    steps:
+      - checkout
+      - run:
+          name: "Say hello"
+          command: "python3"
+
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
@@ -24,3 +45,5 @@ workflows:
   say-hello-workflow:
     jobs:
       - check-python-version
+      - python-console
+      - add
